@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Shop;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Product;
 
 class HomeController extends Controller
@@ -10,7 +11,14 @@ class HomeController extends Controller
 
     public function index(){
 
-        $products = Product::all();
-        return view('shop.index', ['products'=>$products]);
+        $categories = Category::all();
+        $topSellerProducts = Product::query()->orderByDesc('created_at')->take(6)->get();
+        $newestProducts = Product::query()->orderByDesc('created_at')->take(6)->get();
+
+        return view('shop.index', [
+            'topSellerProducts'=>$topSellerProducts,
+            'newestProducts'=>$newestProducts,
+            'categories'=>$categories
+        ]);
     }
 }

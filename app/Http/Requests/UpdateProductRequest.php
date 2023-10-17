@@ -26,7 +26,6 @@ class UpdateProductRequest extends FormRequest
             'title' => ['string'],
             'price' => ['integer'],
             'description' => ['string'],
-            'image' => ['image'],
             'category_id' => ['exists:categories,id']
         ];
     }

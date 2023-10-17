@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Image;
 use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
@@ -19,11 +20,11 @@ class ProductController extends Controller
      */
     public function index()
     {
-        if (!Auth::user()->can('View Products')){
+        if (!Auth::user()->can('View Products')) {
             abort(403);
         }
-        $products = Product::all();
-        return view('admin.products-all', ['products'=>$products]);
+        $products = Product::paginate(8);
+        return view('admin.products.products-all', ['products' => $products]);
 
     }
 
@@ -36,7 +37,7 @@ class ProductController extends Controller
             abort(403);
         }
         $categories = Category::all();
-        return view('admin.create-product', ['categories' => $categories]);
+        return view('admin.products.create-product', ['categories' => $categories]);
     }
 
     /**
@@ -46,10 +47,15 @@ class ProductController extends Controller
     {
         $inputs = $request->all();
         $inputs['user_id'] = auth()->id();
-        if ($request->image){
-            $inputs['image'] = $request->file('image')->store('images');
+        $product = Product::create($inputs);
+        if ($images = $request->file('images')) {
+            foreach ($images as $image) {
+                $image->store('images');
+                $product->images()->create([
+                    'file_name' => $image->hashName()
+                ]);
+            }
         }
-        Product::create($inputs);
         Session::flash('store-message', 'Product Created Successfully.');
         return redirect()->route('products.index');
     }
@@ -59,10 +65,10 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        if (!Auth::user()->can('View Products')){
+        if (!Auth::user()->can('View Products')) {
             abort(403);
         }
-        return view('admin.product-single',['product'=>$product]);
+        return view('admin.products.product-single', ['product' => $product]);
     }
 
     /**
@@ -70,11 +76,11 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        if (!Auth::user()->can('Edit Products')){
+        if (!Auth::user()->can('Edit Products')) {
             abort(403);
         }
         $categories = Category::all();
-        return view('admin.edit-product',['categories'=>$categories,'product'=>$product]);
+        return view('admin.products.edit-product', ['categories' => $categories, 'product' => $product]);
     }
 
     /**
@@ -83,11 +89,19 @@ class ProductController extends Controller
     public function update(UpdateProductRequest $request, Product $product)
     {
         $inputs = $request->all();
-        if ($request->image){
-            if ($product->image){
-                Storage::delete($product->getRawOriginal('image'));
+        if ($images = $request->file('images')) {
+            if ($oldImages = $product->images) {
+                foreach ($oldImages as $oldImage) {
+                    Storage::delete('images/'.$oldImage->getRawOriginal('file_name'));
+                    $oldImage->delete();
+                }
             }
-            $inputs['image'] = $request->file('image')->store('images');
+            foreach ($images as $image) {
+                $image->store('images');
+                $product->images()->create([
+                    'file_name' => $image->hashName()
+                ]);
+            }
         }
         $product->update($inputs);
         Session::flash('update-message', 'Product Updated Successfully.');
@@ -99,11 +113,14 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        if (!Auth::user()->can('Delete Products')){
+        if (!Auth::user()->can('Delete Products')) {
             abort(403);
         }
-        if ($product->image){
-            Storage::delete($product->getRawOriginal('image'));
+        if ($oldImages = $product->images) {
+            foreach ($oldImages as $oldImage) {
+                Storage::delete('images/'.$oldImage->getRawOriginal('file_name'));
+                $oldImage->delete();
+            }
         }
         $product->delete();
         Session::flash('destroy-message', 'Product Deleted Successfully.');

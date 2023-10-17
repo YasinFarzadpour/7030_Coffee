@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Product extends Model
 {
@@ -18,10 +19,14 @@ class Product extends Model
         'title',
         'price',
         'description',
-        'image',
         'category_id',
         'user_id',
     ];
+
+    public function images(): HasMany
+    {
+        return $this->hasMany(Image::class);
+    }
 
     public function category(): BelongsTo
     {
@@ -36,10 +41,4 @@ class Product extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function getImageAttribute($value) {
-        if (strpos($value, 'https://') !== FALSE || strpos($value, 'http://') !== FALSE || !$value) {
-            return $value;
-        }
-        return asset($value);
-    }
 }

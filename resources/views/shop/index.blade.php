@@ -10,32 +10,19 @@
                     <div class="swiper-slide dark">
                         <div class="container">
                             <div class="slider-caption">
-                                <h2 data-animate="fadeInUp">Premium Classic Shoe</h2>
-                                <p class="mb-4" data-animate="fadeInUp" data-delay="100">A New Collection of Summer
-                                    2019.</p>
-                                <div>
-                                    <a href="demo-store-products.html" data-animate="fadeInUp" data-delay="200"
-                                       class="button button-large button-white button-light">Shop Men</a>
-                                    <a href="demo-store-products.html" data-animate="fadeInUp" data-delay="200"
-                                       class="button button-large button-white button-light">Shop Women</a>
-                                </div>
+                                <h2 data-animate="fadeInUp">Premium Coffee Blends</h2>
+                                <p class="mb-4" data-animate="fadeInUp" data-delay="100">Blends Of Our Team</p>
                             </div>
                         </div>
                         <div class="swiper-slide-bg"
-                             style="background-image: url('demos/store/images/slider/1.jpg');"></div>
+                             style="background-image: linear-gradient(to bottom, rgba(0,0,0,.1), rgba(0,0,0,.6)), url('demos/store/images/slider/1.jpg');"></div>
                     </div>
                     <div class="swiper-slide dark">
                         <div class="container">
                             <div class="slider-caption">
-                                <h2 data-animate="fadeInUp">New Sports Collection</h2>
-                                <p class="mb-4" data-animate="fadeInUp" data-delay="100">Black &amp; White
-                                    Collections</p>
-                                <div>
-                                    <a href="demo-store-products.html" data-animate="fadeInUp" data-delay="200"
-                                       class="button button-large button-white button-light">Shop Men</a>
-                                    <a href="demo-store-products.html" data-animate="fadeInUp" data-delay="200"
-                                       class="button button-large button-white button-light">Shop Women</a>
-                                </div>
+                                <h2 data-animate="fadeInUp">New Brewing Equipments</h2>
+                                <p class="mb-4" data-animate="fadeInUp" data-delay="100">Looking for something to make
+                                    great coffee with?</p>
                             </div>
                         </div>
                         <div class="swiper-slide-bg"
@@ -44,15 +31,8 @@
                     <div class="swiper-slide dark">
                         <div class="container">
                             <div class="slider-caption">
-                                <h2 data-animate="fadeInUp">Latest Sweatshirts</h2>
-                                <p class="mb-4" data-animate="fadeInUp" data-delay="100">Collections for Summer
-                                    Clothes</p>
-                                <div>
-                                    <a href="demo-store-products.html" data-animate="fadeInUp" data-delay="200"
-                                       class="button button-large button-white button-light">Shop Men</a>
-                                    <a href="demo-store-products.html" data-animate="fadeInUp" data-delay="200"
-                                       class="button button-large button-white button-light">Shop Women</a>
-                                </div>
+                                <h2 data-animate="fadeInUp">Instant Coffee</h2>
+                                <p class="mb-4" data-animate="fadeInUp" data-delay="100">Fresh and Easy</p>
                             </div>
                         </div>
                         <div class="swiper-slide-bg"
@@ -94,105 +74,58 @@
 
             <div class="container-fluid">
                 <div class="mx-auto center bottommargin" style="max-width: 700px">
-                    <h2>Fresh Collection of 2019</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto aspernatur repudiandae nobis
-                        earum voluptate id adipisci nostrum mollitia, ipsam, asperiores, soluta dolorem facere
-                        exercitationem laborum. Magni mollitia laudantium vel tempore.</p>
+                    <h2>Our Mission</h2>
+                    <p>7030 Coffee is on a mission to increase access to high quality coffee and learn about new brewing
+                        method.</p>
                 </div>
             </div>
 
-            <div class="container-fluid">
+            <div class="clear divider"></div>
+
+            <div class="line line-sm"></div>
+                <div class="container-fluid">
                 <div class="row mt-2">
-                    <div class="col-md-4 mb-5">
-                        <div class="card cat-card rounded-0 border-0 dark">
-                            <img src="demos/store/images/cat/outerwear.jpg" class="card-img rounded-0" alt="...">
-                            <div class="d-flex align-items-start flex-column card-img-overlay p-4">
-                                <h3 class="h3 text-white ls--1 fw-bold mt-2 mb-auto">50% Off</h3>
-                                <h3 class="h2 text-white ls--1 fw-bold mb-4">Outerwear</h3>
-                                <p>This is a wider card as a natural lead-in to additional content. This content is a
-                                    little bit longer.</p>
-                                <a href="demo-store-products.html" class="button button button-white button-light ms-0">Shop
-                                    Now</a>
+                    @foreach($categories as $category)
+                        <div class="col-md-4 mb-5">
+                            <div class="card cat-card rounded-0 border-0 dark">
+                                <img src="demos/store/images/slider/1.jpg" class="card-img rounded-0" alt="...">
+                                <div class="d-flex align-items-start flex-column card-img-overlay p-4">
+                                    <h3 class="h3 text-white ls--1 fw-bold mt-2 mb-auto"></h3>
+                                    <h3 class="h2 text-white ls--1 fw-bold mb-4">{{$category->name}}</h3>
+                                    <a href="{{route('shop.products.index', ['cate[]'=>$category->id])}}"
+                                       class="button button button-white button-light ms-0">View Products</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4 mb-5">
-                        <div class="card cat-card rounded-0 border-0 dark">
-                            <img src="demos/store/images/cat/footwear.jpg" class="card-img rounded-0" alt="...">
-                            <div class="d-flex align-items-start flex-column card-img-overlay bg p-4">
-                                <h3 class="h3 text-white ls--1 fw-bold mt-2 mb-auto">50% Off</h3>
-                                <h3 class="h2 text-white ls--1 fw-bold mb-4">Footwear</h3>
-                                <p>This is a wider card with supporting text below as a natural lead-in to additional
-                                    content.</p>
-                                <a href="demo-store-products.html" class="button button button-white button-light ms-0">Shop
-                                    Now</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-5">
-                        <div class="card cat-card rounded-0 border-0 dark">
-                            <img src="demos/store/images/cat/workout.jpg" class="card-img rounded-0" alt="...">
-                            <div class="d-flex align-items-start flex-column card-img-overlay bg p-4">
-                                <h3 class="h3 text-white ls--1 fw-bold mt-2 mb-auto">30% Off</h3>
-                                <h3 class="h2 text-white ls--1 fw-bold mb-4">Sportswear</h3>
-                                <p>This is a wider card with supporting text below as a natural lead-in to additional
-                                    content.</p>
-                                <a href="demo-store-products.html" class="button button button-white button-light ms-0">Shop
-                                    Now</a>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
-            </div>
-
-            <div class="clear"></div>
+                </div>
+            <div class="line line-sm"></div>
+            <div class="clear divider"></div>
 
             <div class="container-fluid topmargin">
-                <div class="row">
-                    <div class="col-md-2 sticky-sidebar-wrap">
-                        <ul class="list-unstyled items-nav sticky-sidebar">
-                            <li><a href="#" class="text-dark fw-semibold">All Collections</a></li>
-                            <li class="no-divider"><a href="#" class="text-dark fw-semibold">New Arrivals</a></li>
-                            <li>
-                                <hr>
-                            </li>
-                            <li><a href="#">Jeans</a></li>
-                            <li><a href="#">T-Shirts</a></li>
-                            <li><a href="#">Tops</a></li>
-                            <li><a href="#">Dresses</a></li>
-                            <li><a href="#">Skirts</a></li>
-                            <li><a href="#">Sportswear</a></li>
-                            <li><a href="#">Shorts</a></li>
-                            <li><a href="#">Trousers</a></li>
-                            <li><a href="#">Sweat-shirts</a></li>
-                            <li><a href="#">Sweaters</a></li>
-                            <li><a href="#">Flats</a></li>
-                            <li><a href="#">Sandals</a></li>
-                            <li><a href="#">Loafers & Oxfords</a></li>
-                            <li><a href="#">Heels</a></li>
-                        </ul>
+                <div class="container-fluid">
+                    <div class="mx-auto center bottommargin" style="max-width: 700px">
+                        <h2 class="h1 fw-bold ls--1 color">...New Products...</h2>
                     </div>
-
-                    <div class="col-md-10">
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
                         <div class="row">
-
-                            <!-- Shop Item 1
-                            ============================================= -->
-                            @foreach($products as $product)
-                                <div class="col-lg-4 col-md-6 mb-4">
+                            @foreach($newestProducts as $product)
+                                <div class="col-lg-2 col-md-2 mb-2">
                                     <div class="product">
                                         <div class="product-image position-relative">
-                                            <div class="fslider" data-pagi="false" data-speed="400" data-pause="200000">
+                                            <div class="fslider" data-pagi="false" data-speed="400" data-pause="10000">
                                                 <div class="flexslider">
                                                     <div class="slider-wrap">
-                                                        <div class="slide">
-                                                            <a href="{{route('shop.products.show', $product->id)}}"><img
-                                                                    src="{{$product->image}}" alt="Black Shoe"></a>
-                                                        </div>
-                                                        <div class="slide">
-                                                            <a href="{{route('shop.products.show', $product->id)}}"><img
-                                                                    src="{{$product->image}}" alt="Black Shoe"></a>
-                                                        </div>
+                                                        @foreach($product->images as $image)
+                                                            <div class="slide">
+                                                                <a href="{{route('shop.products.show', $product->id)}}"><img
+                                                                        src="{{$image->file_name}}"
+                                                                        alt="Black Shoe"></a>
+                                                            </div>
+                                                        @endforeach
                                                     </div>
                                                 </div>
                                             </div>
@@ -204,7 +137,7 @@
                                                 <h3>
                                                     <a href="{{route('shop.products.show', $product->id)}}">{{$product->title}}</a>
                                                 </h3>
-                                                <span><a href="#">Nike</a></span>
+                                                <span>{{$product->category->name}}</span>
                                             </div>
                                             <div class="product-price">
                                                 <ins>{{number_format($product->price) }} Toman</ins>
@@ -213,40 +146,80 @@
                                     </div>
                                 </div>
                             @endforeach
-
-                            <!-- Shop Item 2
-                                ============================================= -->
-
-                            <!-- Shop Item 3
-                            ============================================= -->
-
-                            <!-- Shop Item 4
-                            ============================================= -->
-
-                            <!-- Shop Item 5
-                            ============================================= -->
-
-                            <!-- Shop Item 6
-                            ============================================= -->
-
-                            <!-- Shop Item 7
-                            ============================================= -->
-
-                            <!-- Shop Item 8
-                            ============================================= -->
-
-                            <!-- Shop Item 9
-                            ============================================= -->
-
                         </div>
                     </div>
                 </div>
             </div>
 
+            <div class="line line-sm"></div>
+            <div class="clear divider"></div>
+
+            <div class="container-fluid topmargin">
+                <div class="container-fluid">
+                    <div class="mx-auto center bottommargin" style="max-width: 700px">
+                        <h2 class="h1 fw-bold ls--1 color">...Top Seller Products...</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            @foreach($topSellerProducts as $product)
+                                <div class="col-lg-2 col-md-2 mb-2">
+                                    <div class="product">
+                                        <div class="product-image position-relative">
+                                            <div class="fslider" data-pagi="false" data-speed="400" data-pause="10000">
+                                                <div class="flexslider">
+                                                    <div class="slider-wrap">
+                                                        @foreach($product->images as $image)
+                                                            <div class="slide">
+                                                                <a href="{{route('shop.products.show', $product->id)}}"><img
+                                                                        src="{{$image->file_name}}"
+                                                                        alt="Black Shoe"></a>
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a href="#" class="cart-btn button button-white button-light"><i
+                                                    class="icon-line-plus"></i>Add to Cart</a>
+                                        </div>
+                                        <div class="product-desc">
+                                            <div class="product-title">
+                                                <h3>
+                                                    <a href="{{route('shop.products.show', $product->id)}}">{{$product->title}}</a>
+                                                </h3>
+                                                <span>{{$product->category->name}}</span>
+                                            </div>
+                                            <div class="product-price">
+                                                <ins>{{number_format($product->price) }} Toman</ins>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="clear divider"></div>
+
+            <div class="line line-sm"></div>
+
+            <div class="container-fluid">
+                <div class="mx-auto center bottommargin" style="max-width: 700px">
+                    <h2 class="h1 fw-bold ls--1 color">
+                        <a href="{{route('shop.products.index')}}"> View All Products  <i class="icon-line-fast-forward small"></i></a>
+                    </h2>
+                </div>
+            </div>
+
+            <div class="clear divider"></div>
+
             <div class="container-fluid mt-5">
                 <div class="row">
                     <div class="col-md-6 mb-5">
-                        <img src="demos/store/images/others/travel.jpg" alt="image" class="mb-4">
+                        <img src="demos/store/images/others/4.jpg" alt="image" class="mb-4">
                         <h4 class="mb-2"><a href="#">Want to travel? Great Stuffs for Travel</a></h4>
                         <p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo doloremque
                             eveniet dolorem, porro earum. Eius, corrupti provident iusto modi sunt.</p>
@@ -255,7 +228,7 @@
                     </div>
 
                     <div class="col-md-6 mb-5">
-                        <img src="demos/store/images/others/store.jpg" alt="image" class="mb-4">
+                        <img src="demos/store/images/others/5.jpg" alt="image" class="mb-4">
                         <h4 class="mb-2">Our Melbourne Store</h4>
                         <p class="mb-2">Authoritatively deliver 2.0 niches vis-a-vis backward-compatible infomediaries.
                             Authoritatively actualize empowered e-tailers with just in time.</p>

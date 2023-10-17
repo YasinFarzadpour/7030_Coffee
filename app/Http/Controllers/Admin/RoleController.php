@@ -19,9 +19,9 @@ class RoleController extends Controller
         if (!Auth::user()->can('View Roles')){
             abort(403);
         }
-        $roles = Role::all();
+        $roles = Role::paginate(8);
         $permissions = Permission::all();
-        return view('admin.roles-all',['roles'=>$roles, 'permissions'=>$permissions]);
+        return view('admin.roles-permissions.roles-all',['roles'=>$roles, 'permissions'=>$permissions]);
     }
 
     /**
@@ -33,7 +33,7 @@ class RoleController extends Controller
             abort(403);
         }
         $permissions = Permission::all();
-        return view('admin.create-role', ['permissions'=>$permissions]);
+        return view('admin.roles-permissions.create-role', ['permissions'=>$permissions]);
     }
 
     /**
@@ -68,7 +68,7 @@ class RoleController extends Controller
             abort(403);
         }
         $permissions = Permission::all();
-        return view('admin.edit-role', ['role'=>$role, 'permissions'=>$permissions]);
+        return view('admin.roles-permissions.edit-role', ['role'=>$role, 'permissions'=>$permissions]);
     }
 
     /**

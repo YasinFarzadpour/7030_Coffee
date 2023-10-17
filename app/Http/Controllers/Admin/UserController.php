@@ -21,8 +21,8 @@ class UserController extends Controller
         if (!Auth::user()->can('View Users')){
             abort(403);
         }
-        $users = User::all();
-        return view('admin.users-all', ['users'=>$users]);
+        $users = User::paginate(8);
+        return view('admin.users.users-all', ['users'=>$users]);
     }
 
     /**
@@ -34,7 +34,7 @@ class UserController extends Controller
             abort(403);
         }
         $roles = Role::all();
-        return view('admin.create-user', ['roles'=>$roles]);
+        return view('admin.users.create-user', ['roles'=>$roles]);
     }
 
     /**
@@ -60,7 +60,7 @@ class UserController extends Controller
         if (!Auth::user()->can('View Users')){
             abort(403);
         }
-        return view('admin.user-single', ['user'=>$user]);
+        return view('admin.users.user-single', ['user'=>$user]);
     }
 
     /**
@@ -72,7 +72,7 @@ class UserController extends Controller
             abort(403);
         }
         $roles = Role::all();
-        return view('admin.edit-user', ['roles'=>$roles,'user'=>$user]);
+        return view('admin.users.edit-user', ['roles'=>$roles,'user'=>$user]);
     }
 
     /**

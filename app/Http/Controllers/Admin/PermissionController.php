@@ -19,8 +19,8 @@ class PermissionController extends Controller
         if (!Auth::user()->can('View Permissions')){
             abort(403);
         }
-        $permissions = Permission::all();
-        return view('admin.permissions-all',['permissions'=>$permissions]);
+        $permissions = Permission::paginate(8);
+        return view('admin.roles-permissions.permissions-all',['permissions'=>$permissions]);
     }
 
     /**
@@ -31,7 +31,7 @@ class PermissionController extends Controller
         if (!Auth::user()->can('Create Permissions')){
             abort(403);
         }
-        return view('admin.create-permission');
+        return view('admin.roles-permissions.create-permission');
     }
 
     /**
@@ -64,7 +64,7 @@ class PermissionController extends Controller
         if (!Auth::user()->can('Edit Permissions')){
             abort(403);
         }
-        return view('admin.edit-permission', ['permission'=>$permission]);
+        return view('admin.roles-permissions.edit-permission', ['permission'=>$permission]);
     }
 
     /**

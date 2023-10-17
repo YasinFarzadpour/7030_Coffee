@@ -635,12 +635,3 @@
 
     </div>
 @endsection
-
-@section('scripts')
-    <!-- Apex js-->
-    <script src="{{asset('assets/Admin/libs/apexcharts/apexcharts.min.js')}}"></script>
-
-    <!-- Dashboard init-->
-    <script src="{{asset('assets/Admin/js/pages/dashboard-sales.init.js')}}"></script>
-
-@endsection

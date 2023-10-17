@@ -175,23 +175,3 @@
     </footer>
     <!-- end Footer -->
 @endsection
-@section('scripts')
-
-    <!-- Plugins js-->
-    <script src="{{asset('assets/Admin/libs/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js')}}"></script>
-
-    <!-- Plugins js -->
-    <script src="{{asset('assets/Admin/libs/quill/quill.min.js')}}"></script>
-
-    <!-- Select2 js-->
-    <script src="{{asset('assets/Admin/libs/select2/js/select2.min.js')}}"></script>
-    <!-- Dropzone file uploads-->
-    <script src="{{asset('assets/Admin/libs/dropzone/min/dropzone.min.js')}}"></script>
-
-    <!-- Init js-->
-    <script src="{{asset('assets/Admin/js/pages/form-fileuploads.init.js')}}"></script>
-
-    <!-- Init js -->
-    <script src="{{asset('assets/Admin/js/pages/add-product.init.js')}}"></script>
-
-@endsection

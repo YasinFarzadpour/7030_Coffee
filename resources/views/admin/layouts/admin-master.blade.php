@@ -44,8 +44,6 @@
 @include('admin.partials.admin-js')
 @yield('scripts')
 
-<!-- App js -->
-<script src="{{asset('assets/Admin/js/app.min.js')}}"></script>
 
 </body>
 </html>

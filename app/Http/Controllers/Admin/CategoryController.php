@@ -21,8 +21,8 @@ class CategoryController extends Controller
         if (!Auth::user()->can('View Categories')){
             abort(403);
         }
-        $categories = Category::all();
-        return view('admin.categories-all', ['categories'=>$categories]);
+        $categories = Category::paginate(8);
+        return view('admin.categories.categories-all', ['categories'=>$categories]);
     }
 
     /**
@@ -33,7 +33,7 @@ class CategoryController extends Controller
         if (!Auth::user()->can('Create Categories')) {
             abort(403);
         }
-        return view('admin.create-category');
+        return view('admin.categories.create-category');
     }
 
     /**
@@ -58,7 +58,7 @@ class CategoryController extends Controller
         if (!Auth::user()->can('View Categories')){
             abort(403);
         }
-        return view('admin.category-single', ['category'=>$category]);
+        return view('admin.categories.category-single', ['category'=>$category]);
     }
 
     /**
@@ -69,7 +69,7 @@ class CategoryController extends Controller
         if (!Auth::user()->can('Edit Categories')){
             abort(403);
         }
-        return view('admin.edit-category', ['category'=>$category]);
+        return view('admin.categories.edit-category', ['category'=>$category]);
     }
 
     /**
