@@ -103,6 +103,9 @@ class ProductController extends Controller
                 ]);
             }
         }
+        if (!$request->is_published){
+            $inputs['is_published']=0;
+        }
         $product->update($inputs);
         Session::flash('update-message', 'Product Updated Successfully.');
         return redirect()->route('products.index');

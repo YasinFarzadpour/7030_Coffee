@@ -103,13 +103,7 @@
                                 <a href="{{route('categories.index')}}">Categories List</a>
                             </li>
                             <li>
-                                <a href="ecommerce-orders.html">Orders</a>
-                            </li>
-                            <li>
-                                <a href="ecommerce-orders-detail.html">Order Detail</a>
-                            </li>
-                            <li>
-                                <a href="ecommerce-sellers.html">Sellers</a>
+                                <a href="{{route('orders.index')}}">Orders</a>
                             </li>
                             <li>
                                 <a href="ecommerce-cart.html">Shopping Cart</a>

@@ -105,26 +105,32 @@
         </ul>
 
         <!-- LOGO -->
-        <div class="logo-box">
-            <a href="index.html" class="logo logo-dark text-center">
-                            <span class="logo-sm">
-                                <img src="assets/admin/images/logo-sm-dark.png" alt="" height="24">
-                                <!-- <span class="logo-lg-text-light">Minton</span> -->
-                            </span>
-                <span class="logo-lg">
-                                <img src="assets/admin/images/logo-dark.png" alt="" height="20">
-                    <!-- <span class="logo-lg-text-light">M</span> -->
-                            </span>
+        <div class="logo-box ml-1">
+            <h3>
+            <a class="nav-link waves-effect waves-light" aria-haspopup="false" aria-expanded="false">
+                ADMIN
             </a>
+            </h3>
 
-            <a href="index.html" class="logo logo-light text-center">
-                            <span class="logo-sm">
-                                <img src="assets/admin/images/logo-sm.png" alt="" height="24">
-                            </span>
-                <span class="logo-lg">
-                                <img src="assets/admin/images/logo-light.png" alt="" height="20">
-                            </span>
-            </a>
+{{--            <a href="index.html" class="logo logo-dark text-center">--}}
+{{--                            <span class="logo-sm">--}}
+{{--                                <img src="assets/admin/images/logo-sm-dark.png" alt="" height="24">--}}
+{{--                                <!-- <span class="logo-lg-text-light">Minton</span> -->--}}
+{{--                            </span>--}}
+{{--                <span class="logo-lg">--}}
+{{--                                <img src="assets/admin/images/logo-dark.png" alt="" height="20">--}}
+{{--                    <!-- <span class="logo-lg-text-light">M</span> -->--}}
+{{--                            </span>--}}
+{{--            </a>--}}
+
+{{--            <a href="index.html" class="logo logo-light text-center">--}}
+{{--                            <span class="logo-sm">--}}
+{{--                                <img src="assets/admin/images/logo-sm.png" alt="" height="24">--}}
+{{--                            </span>--}}
+{{--                <span class="logo-lg">--}}
+{{--                                <img src="assets/admin/images/logo-light.png" alt="" height="20">--}}
+{{--                            </span>--}}
+{{--            </a>--}}
         </div>
 
         <ul class="list-unstyled topnav-menu topnav-menu-left m-0">

@@ -61,6 +61,12 @@
                                             <div class="mt-3">
                                                 <h5>Price :   <b>{{$product->price}}</b></h5>
                                             </div>
+                                            <div class="mt-3">
+                                                <h5>Published :   <b>{{$product->is_published}}</b></h5>
+                                            </div>
+                                            <div class="mt-3">
+                                                <h5>Stock :   <b>{{$product->stock}}</b></h5>
+                                            </div>
                                             <hr/>
 
                                             <div>

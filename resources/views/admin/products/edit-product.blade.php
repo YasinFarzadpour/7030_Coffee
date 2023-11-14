@@ -45,7 +45,7 @@
                                                 <p class="sub-header">Fill all information below</p>
                                                 <div>
                                                     <div class="row">
-                                                        <div class="col-lg-3">
+                                                        <div class="col-lg-2">
                                                             <div class="mb-3">
                                                                 <label for="product-title" class="form-label">Product Title
                                                                     <span class="text-danger">*</span></label>
@@ -56,7 +56,7 @@
                                                                 @endif
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-3">
+                                                        <div class="col-lg-2">
                                                             <div class="mb-3">
                                                                 <label for="product-category" class="form-label">Categories
                                                                     <span class="text-danger">*</span></label>
@@ -71,12 +71,31 @@
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-3">
+                                                        <div class="col-lg-2">
                                                             <div class="mb-3">
                                                                 <label for="product-price" class="form-label">Price <span
                                                                         class="text-danger">*</span></label>
                                                                 <input type="number" name="price" class="form-control" id="product-price"
                                                                        placeholder="Enter amount" value="{{$product->price}}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-2">
+                                                            <div class="mb-3">
+                                                                <label for="product-stock" class="form-label">Stock
+                                                                    <span
+                                                                        class="text-danger">*</span></label>
+                                                                <input type="number" name="stock" class="form-control"
+                                                                       id="product-stock"
+                                                                       placeholder="Enter Quantity" value="{{$product->stock}}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-2">
+                                                            <div class="mb-3 mt-4">
+                                                                <label for="product-status" class="form-label">Publish
+                                                                    <span class="text-danger">*</span></label>
+                                                                <input type="checkbox" class="checkbox"
+                                                                       name="is_published" value="1"
+                                                                       id="product_status" {{ (1 == $product->is_published) ? 'checked' : ''}}>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -85,7 +104,7 @@
                                                     <label for="product-description" class="form-label">Product
                                                         Description <span class="text-danger">*</span></label>
                                                     <div >
-                                                        <textarea class="form-control" style="height: 200px; width: 870px" name="description" id="product-description">{{$product->description}}</textarea>
+                                                        <textarea class="form-control" style="height: 100px; width: 870px" name="description" id="product-description">{{$product->description}}</textarea>
                                                     </div>
                                                 </div>
 

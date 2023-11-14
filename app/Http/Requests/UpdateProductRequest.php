@@ -26,7 +26,9 @@ class UpdateProductRequest extends FormRequest
             'title' => ['string'],
             'price' => ['integer'],
             'description' => ['string'],
-            'category_id' => ['exists:categories,id']
+            'category_id' => ['exists:categories,id'],
+            'is_published' => ['boolean'],
+            'stock' => ['integer'],
         ];
     }
 }

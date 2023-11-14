@@ -18,26 +18,36 @@ class RolesAndPermissionsSeeder extends Seeder
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
         Permission::create(['name'=>'View Admin']);
+
         Permission::create(['name'=>'View Products']);
         Permission::create(['name'=>'Create Products']);
         Permission::create(['name'=>'Edit Products']);
         Permission::create(['name'=>'Delete Products']);
+
         Permission::create(['name'=>'View Categories']);
         Permission::create(['name'=>'Create Categories']);
         Permission::create(['name'=>'Edit Categories']);
         Permission::create(['name'=>'Delete Categories']);
+
         Permission::create(['name'=>'View Users']);
         Permission::create(['name'=>'Create Users']);
         Permission::create(['name'=>'Edit Users']);
         Permission::create(['name'=>'Delete Users']);
+
         Permission::create(['name'=>'View Roles']);
         Permission::create(['name'=>'Create Roles']);
         Permission::create(['name'=>'Edit Roles']);
         Permission::create(['name'=>'Delete Roles']);
+
         Permission::create(['name'=>'View Permissions']);
         Permission::create(['name'=>'Create Permissions']);
         Permission::create(['name'=>'Edit Permissions']);
         Permission::create(['name'=>'Delete Permissions']);
+
+        Permission::create(['name'=>'View Orders']);
+        Permission::create(['name'=>'Edit Orders']);
+        Permission::create(['name'=>'Delete Orders']);
+
         Permission::create(['name'=>'Order Buy']);
 
         $role = Role::create(['name'=>'Super Admin']);
@@ -54,6 +64,7 @@ class RolesAndPermissionsSeeder extends Seeder
             'Delete Categories',
             'Order Buy'
         ]);
+
         $role = Role::create(['name'=>'Users Manager'])->givePermissionTo([
             'View Admin',
             'View Users',
@@ -70,6 +81,19 @@ class RolesAndPermissionsSeeder extends Seeder
             'Delete Permissions',
             'Order Buy'
         ]);
+
+        $role = Role::create(['name'=>'Order Manager'])->givePermissionTo([
+            'View Admin',
+            'View Orders',
+            'Edit Orders',
+            'Delete Orders',
+            'View Users',
+            'View Products',
+            'Edit Products',
+            'Delete Products',
+            'Order Buy'
+        ]);
+
         $role = Role::create(['name'=>'Customer'])->givePermissionTo(['Order Buy']);
     }
 }

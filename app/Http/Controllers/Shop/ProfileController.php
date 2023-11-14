@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Shop;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -39,5 +40,18 @@ class ProfileController extends Controller
         $request->user()->save();
         Session::flash('update-message', 'Profile Updated Successfully.');
         return Redirect::route('shop.profile.show');
+    }
+
+    public function orders()
+    {
+        $user = auth()->user();
+        $orders = $user->orders;
+        return view('shop.profile-orders',['orders'=>$orders]);
+    }
+
+    public function order(Order $order)
+    {
+        $this->authorize('view', $order);
+        return view('shop.profile-order-single',['order'=>$order]);
     }
 }

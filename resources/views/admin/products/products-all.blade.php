@@ -52,7 +52,7 @@
                                 <div class="table-responsive">
                                     <table class="table table-centered w-100 dt-responsive nowrap" id="products-datatable" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                         <thead class="table-light">
-                                        <tr>
+                                        <tr class="text-center">
                                             <th class="all" style="width: 20px;">
                                                 <div class="form-check font-16 mb-0">
                                                     <input class="form-check-input" type="checkbox" id="productlistCheck">
@@ -63,13 +63,14 @@
                                             <th>Category</th>
                                             <th>Added Date</th>
                                             <th>Price</th>
-                                            <th>description</th>
-                                            <th style="width: 85px;">Action</th>
+                                            <th>Published</th>
+                                            <th>Stock</th>
+                                            <th style="width: 50px;">Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         @foreach($products as $product)
-                                        <tr>
+                                        <tr class="text-center">
                                             <td>
                                                 <div class="form-check font-16 mb-0">
                                                     <input class="form-check-input" type="checkbox" id="productlistCheck1">
@@ -88,14 +89,13 @@
                                                 {{$product->created_at}}
                                             </td>
                                             <td>
-                                                <div>
-                                                    {{$product->price}}
-                                                </div>
+                                                {{number_format($product->price)}}
                                             </td>
                                             <td>
-                                                <div>
-                                                    {{Str::limit($product->description,30)}}
-                                                </div>
+                                                {{$product->is_published}}
+                                            </td>
+                                            <td>
+                                                {{$product->stock}}
                                             </td>
                                             <td>
                                                 <ul class="list-inline table-action m-0">

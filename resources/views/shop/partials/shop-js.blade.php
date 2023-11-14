@@ -43,5 +43,21 @@
         }, 400);
         $("#modal-subscribe").attr("displayed", "false");
     });
+    function bindEvents(){
+        $("#top-cart-trigger").off( 'click' ).on( 'click', function(e){
+            $topCart = $('#top-cart');
+            $pagemenu = $('#page-menu');
+            $pagemenu.toggleClass('page-menu-open', false);
+            $topCart.toggleClass('top-cart-open');
+            e.stopPropagation();
+            e.preventDefault();
+        });
 
+        $(document).on('click', function(event) {
+            $topCart = $('#top-cart');
+            if (!$(event.target).closest('#top-cart').length) {
+                $topCart.toggleClass('top-cart-open', false);
+            }
+        });
+    }
 </script>

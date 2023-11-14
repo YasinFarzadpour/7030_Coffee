@@ -60,7 +60,8 @@ class UserController extends Controller
         if (!Auth::user()->can('View Users')){
             abort(403);
         }
-        return view('admin.users.user-single', ['user'=>$user]);
+        $orders = $user->orders;
+        return view('admin.users.user-single', ['user'=>$user , 'orders'=>$orders]);
     }
 
     /**

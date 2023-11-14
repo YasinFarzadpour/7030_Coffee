@@ -13,24 +13,24 @@ class ProductController extends Controller
     public function index(Request $request){
 
         $categories = Category::all();
-        $products = Product::query();
+        $productsQuery = Product::query();
         if ($request->has('cate')){
-            $products->whereIn('category_id',$request->cate);
+            $productsQuery->whereIn('category_id',$request->cate);
         }
         switch ($request->sort_by) {
             case 'title':
-                $products->orderBy('title');
+                $productsQuery->orderBy('title');
                 break;
             case 'price_desc':
-                $products->orderByDesc('price');
+                $productsQuery->orderByDesc('price');
                 break;
             case 'price_asc':
-                $products->orderBy('price');
+                $productsQuery->orderBy('price');
                 break;
             default:
         }
 
-        $products = $products->paginate(8);
+        $products = $productsQuery->where('is_published', 1)->paginate(8);
         return view('shop.products-all', ['products' => $products, 'categories' => $categories]);
     }
 
@@ -41,7 +41,6 @@ class ProductController extends Controller
         return view('shop.product-single',[
             'product'=>$product,
             'products'=>$products,
-            'category'=>$category
         ]);
     }
 }

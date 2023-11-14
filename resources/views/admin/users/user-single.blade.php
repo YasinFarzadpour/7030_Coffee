@@ -24,7 +24,7 @@
                 <!-- end page title -->
 
                 <div class="row">
-                    <div class="col-lg-6 col-xl-6">
+                    <div class="col-lg-4 col-xl-4">
                         <div class="card text-center">
                             <div class="card-body">
                                 <img src="{{$user->image}}" class="rounded-circle mg-thumbnail" width="250px"
@@ -86,6 +86,83 @@
                             </div>
                         </div> <!-- end card-box -->
                     </div> <!-- end col-->
+                    <div class="col-lg-8 col-xl-8">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="align-items-center table table-centered w-100 dt-responsive nowrap" id="orders-datatable" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                        <thead class="table-light">
+                                        <tr>
+                                            <th class="all" style="width: 20px;">
+                                                <div class="form-check font-16 mb-0">
+                                                    <input class="form-check-input" type="checkbox" id="orderlistCheck">
+                                                    <label class="form-check-label" for="orderlistCheck">&nbsp;</label>
+                                                </div>
+                                            </th>
+                                            <th class="all">order Num</th>
+                                            <th>User Id</th>
+                                            <th>Item Count</th>
+                                            <th>Total</th>
+                                            <th>Payment Status</th>
+                                            <th>Order Status</th>
+                                            <th>Date</th>
+                                            <th style="width: 85px;">Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($orders as $order)
+                                            <tr>
+                                                <td>
+                                                    <div class="form-check font-16 mb-0">
+                                                        <input class="form-check-input" type="checkbox" id="orderlistCheck1">
+                                                        <label class="form-check-label" for="orderlistCheck1">&nbsp;</label>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <h5 class="m-0 d-inline-block align-middle">
+                                                        <a href="{{route('orders.show', $order->id)}}" class="text-dark">{{$order->order_number}}</a></h5>
+                                                </td>
+                                                <td>
+                                                    <a href="{{route('users.show', $order->user->id)}}">{{$order->user_id}}</a>
+                                                </td>
+                                                <td>
+                                                    {{$order->item_count}}
+                                                </td>
+                                                <td>
+                                                    {{number_format($order->grand_total)}}
+                                                </td>
+                                                <td>
+                                                    {{$order->payment_status}}
+                                                </td>
+                                                <td>
+                                                    {{ trans('order_statuses.' . $order->status) }}
+                                                </td>
+                                                <td>
+                                                    {{$order->created_at}}
+                                                </td>
+                                                <td>
+                                                    <ul class="row list-inline table-action m-0">
+                                                        <li class="list-inline-item">
+                                                            <a href="{{route('orders.show', $order->id)}}" class="action-icon"> <i class="mdi mdi-eye"></i></a>
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            <form action="{{route('orders.destroy', $order->id)}}" class="mb-0" method="POST" enctype="multipart/form-data">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit" style="background-color: transparent ;border:none" class="action-icon"><i class="mdi mdi-delete"></i></button>
+                                                            </form>
+                                                        </li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
                 <!-- end row-->
 
