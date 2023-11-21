@@ -20,10 +20,10 @@
     <section id="content">
         <div class="content-wrap">
             <div class="container clearfix">
-                <div class="row col-lg-12">
-                    <div>
-                        <h3>Order Number: <p>{{$order->order_number}}</p></h3>
-                    </div>
+                <div>
+                    <h4>Order Number: <span>{{$order->order_number}}</span></h4>
+                </div>
+                <div class="row col-lg-12 table-bordered">
                     <div class="col-md-5">
                         <h3 class="mb-2">Order Items</h3>
                         <table class="table table-striped text-center">
@@ -48,7 +48,7 @@
                         </table>
                     </div>
                     <div class="col-md-7">
-                        <h3 class="mb-5">Order Details</h3>
+                        <h3 class="mb-2">Order Details</h3>
                         <table class="table table-striped text-center">
                             <thead>
                             <tr>

@@ -8,6 +8,7 @@ use App\Models\Image;
 use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
@@ -18,12 +19,18 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         if (!Auth::user()->can('View Products')) {
             abort(403);
         }
-        $products = Product::paginate(8);
+
+        $productsQuery = Product::query();
+        if ($request->has('search')){
+            $productsQuery->where('title', 'Like', '%' . request('search') . '%');
+        }
+
+        $products = $productsQuery->paginate(8);
         return view('admin.products.products-all', ['products' => $products]);
 
     }
