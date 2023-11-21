@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Shop;
 
+use App\Events\OrderConfirmation;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PlaceOrderRequest;
+use App\Jobs\SendEmailJob;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Product;
@@ -88,13 +90,14 @@ class CheckoutController extends Controller
             $order->update([
                 'payment_status' => 1
             ]);
-
             foreach ($order->items as $item) {
                 Product::query()->where('id', $item->product_id)->decrement('stock', $item->quantity);
                 Product::query()->where('id', $item->product_id)->increment('sell_count', $item->quantity);
             }
 
             Cart::destroy();
+
+            OrderConfirmation::dispatch($order);
 
             return view('shop.order-verify', ['reference_id' => $reference_id, 'status' => 1]);
 

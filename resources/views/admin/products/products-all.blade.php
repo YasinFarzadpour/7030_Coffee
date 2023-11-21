@@ -30,9 +30,15 @@
                                         <a href="{{route('products.create')}}" class="btn btn-success mb-2"><i class="mdi mdi-plus-circle me-1"></i> Add Products</a>
                                     </div>
                                     <div class="col-sm-6">
-                                        <div class="me-1">
-                                            <label for="productssearch-input" class="visually-hidden">Search</label>
-                                            <input type="search" class="form-control border-light icon-line-search" id="productssearch-input" placeholder="Search...">
+                                        <div class="float-sm-end">
+                                            <form action="{{route('products.index')}}" method="GET" class="d-flex flex-wrap align-items-center">
+                                                @csrf
+                                                <div class="d-flex flex-wrap align-items-center me-2">
+                                                    <label for="product-search-input" class="visually-hidden">Search</label>
+                                                    <input name="search" type="text" class="form-control" id="product-search-input" placeholder="Search...">
+                                                </div>
+                                                <button type="submit" class="btn btn-dark mb-2 mb-sm-0">Search</button>
+                                            </form>
                                         </div>
                                     </div><!-- end col-->
                                 </div>
